@@ -1,0 +1,41 @@
+# Подключение shell:
+python manage.py shell
+
+# Импорт моделей:
+from task1.models import *
+
+# Создание объектов Game:
+g = Game.objects.create(    title='game1', cost=1000, size=305.05, description='Easy game for beginners'  )
+g = Game.objects.create(    title='game2', cost=1500, size=632.58', description='A game for those who are not used to being bored')
+g = Game.objects.create(    title='game3', cost=3500, size=840.5, description='Game for super gamers')
+
+# Создание объектов Buyer:
+b = Buyer.objects.create(   name='buyer1', balance=1005.5, age=15   )
+b = Buyer.objects.create(   name='buyer2', balance=5000, age=25  )
+b = Buyer.objects.create(   name='buyer3', balance=300.45, age=27  )
+
+# Создание связей:
+for game in Game.objects.all():
+	buyers = Buyer.objects.all()
+	if game in Game.objects.filter(age_limited=True):
+		game.buyer.set(tuple(buyers.exclude(age__lte = 18)))
+	if game.id == 3:
+		game.buyer.set(tuple(buyers.filter(id=3)))
+	if game in Game.objects.filter(age_limited=False):
+		game.buyer.set(tuple(buyers))
+
+# Выход из shell:
+exit()
+
+
+# --------------------
+# Очистка всех связей (опционально):
+buyers = Buyer.objects.all()
+for buyer in buyers:
+	buyer.games.clear()
+
+
+
+
+
+
