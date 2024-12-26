@@ -1,0 +1,17 @@
+{% extends './menu.html' %}
+
+{% block pagename %}
+    <h1>Регистрация</h1>
+{% endblock %}
+
+{% block content %}
+{% if error %}
+<h4>{{ error }}</h4>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Зарегистрироваться">
+</form>
+{% endblock %}
