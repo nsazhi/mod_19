@@ -1,5 +1,7 @@
+from django.contrib.admin.templatetags.admin_list import paginator_number
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from .forms import UserRegister
 from .models import *
 
@@ -51,3 +53,12 @@ def check_sign_up(*args):
     if password != repeat_password:
         error = 'Пароли не совпадают'
     return error
+
+
+def news(request):
+    news = New.objects.all().order_by('date')
+    print(news)
+    paginator = Paginator(news, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'news.html', {'news': page_obj})

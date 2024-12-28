@@ -17,3 +17,6 @@ class BuyerAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     list_per_page = 30
     readonly_fields = ('balance',)
+
+
+admin.site.register(New)

@@ -24,4 +24,5 @@ urlpatterns = [
     path('shop/', shop, name='shop'),
     path('cart/', cart, name='cart'),
     path('form/', sign_up_by_django, name='django_sign_up'),
+    path('news/', news, name='news'),
 ]
