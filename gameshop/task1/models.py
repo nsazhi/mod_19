@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Buyer(models.Model):
     name = models.CharField(max_length=100)
-    balance = models.DecimalField(max_digits=10, decimal_places=2,default=0)
+    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     age = models.IntegerField()
 
     def __str__(self):
@@ -21,6 +21,16 @@ class Game(models.Model):
 
 
 class New(models.Model):
-    title= models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     content = models.TextField()
     date = models.DateField(auto_now_add=True)
+
+
+class Test(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField(null=False)
+
+
+class Test2(models.Model):
+    username = models.CharField(max_length=100)
+    email = models.EmailField(null=False)

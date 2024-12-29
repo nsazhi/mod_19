@@ -1,4 +1,3 @@
-from django.contrib.admin.templatetags.admin_list import paginator_number
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.paginator import Paginator

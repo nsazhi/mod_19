@@ -20,3 +20,5 @@ class BuyerAdmin(admin.ModelAdmin):
 
 
 admin.site.register(New)
+admin.site.register(Test)
+admin.site.register(Test2)
